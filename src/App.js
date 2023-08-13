@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import {Component} from 'react'
+import Header from './component/Header'
+import FirstItem from './component/FirstItem'
+import './App.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+  state={activeLanguage:"EN"}
+
+  changeOption=(language)=>{
+    this.setState({activeLanguage:language})
+  }
+
+  render(){
+    const {activeLanguage}=this.state
+    return(
+      <>
+      <Header activeLanguage={activeLanguage} changeOption={this.changeOption} />
+      <FirstItem activeLanguage={activeLanguage} />
+      </>
+    )
+  }
 }
+
+
 
 export default App;
